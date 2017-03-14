@@ -55,6 +55,35 @@ html, body {
     $nav-subitem-bg;
 }
 
+.verb {
+  font-family: Consolas, 'Courier New';
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 8px 8px 6px 8px;
+  font-weight: bold;
+  text-shadow: none;
+  color: white;
+
+  &.get {
+    background-color: #4F98C7;
+  }
+
+  &.post {
+    background-color: #4DD777;
+  }
+
+  &.delete {
+    background-color: #FF855B;
+  }
+}
+
+.url {
+  font-family: Consolas, 'Courier New';
+  margin-left: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
 .tocify-wrapper {
   transition: left 0.3s ease-in-out;
 
@@ -67,8 +96,6 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
 
   // language selector for mobile devices
   .lang-selector {
@@ -83,6 +110,8 @@ html, body {
   &>img {
     display: block;
     max-width: 100%;
+    width: 130px;
+    margin: 20px auto;
   }
 
   &>.search {
@@ -123,12 +152,11 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
+    background: $nav-subitem-bg;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
     }
-
-    @include embossed-bg;
 
     li {
       margin: 1em $nav-padding;
@@ -145,13 +173,21 @@ html, body {
     }
   }
 
+  .tocify-subheader>.tocify-item {
+    &:first-child {
+      border-top: 0;
+    }
+    border-top: 1px solid rgb(232, 234, 235);
+  }
 
   .tocify-item>a, .toc-footer li {
-    padding: 0 $nav-padding 0 $nav-padding;
+    padding: 9px $nav-padding 9px $nav-padding;
     display: block;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: 400;
   }
 
   // The Table of Contents is composed of multiple nested
@@ -186,11 +222,10 @@ html, body {
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     // for embossed look:
-    @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
@@ -339,7 +374,6 @@ html, body {
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
-    text-shadow: $main-embossed-text-shadow;
 
     @extend %left-col;
   }
@@ -354,15 +388,25 @@ html, body {
   }
 
   h1 {
-    @extend %header-font;
-    font-size: 30px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
-    border-top: 1px solid #ddd;
-    background-image: linear-gradient(to bottom, #fff, #f9f9f9);
+    color: white;
+    .search-highlight {
+      background: white;
+      font-size: 1px;
+      border: none;
+    }
+    &.visible {
+      @extend %header-font;
+      display: block;
+      font-size: 30px;
+      color: $main-text;
+      font-weight: normal;
+      text-shadow: none;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      margin-bottom: $h1-margin-bottom;
+      margin-top: 2em;
+      border-top: 1px solid #ddd;
+    }
   }
 
   h1:first-child, div:first-child + h1 {
@@ -372,20 +416,12 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 20px;
+    font-size: 28px;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
-  }
-
-  // h2s right after h1s should bump right up
-  // against the h1s.
-  h1 + h2, h1 + div + h2 {
-    margin-top: $h1-margin-bottom * -1;
-    border-top: none;
   }
 
   h3, h4, h5, h6 {
@@ -508,10 +544,12 @@ html, body {
   .search-highlight {
     padding: 2px;
     margin: -2px;
-    border-radius: 4px;
     border: 1px solid #F7E633;
-    text-shadow: 1px 1px 0 #666;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+  }
+
+  .highlight .search-highlight {
+    color: white;
   }
 }
 
@@ -551,13 +589,11 @@ html, body {
   }
 
   blockquote {
+    padding: 0;
     &>p {
       background-color: $code-annotation-bg;
-      border-radius: 5px;
       padding: $code-annotation-padding;
       color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
     }
   }
 }
@@ -620,6 +656,10 @@ html, body {
 
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
   color: #909090;
+}
+
+.highlight .gp {
+  color: white;
 }
 
 .highlight, .highlight .w {
