@@ -57,6 +57,7 @@ html, body {
 
 .verb {
   font-family: Consolas, 'Courier New';
+  border-radius: 10px;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 8px 8px 6px 8px;
@@ -73,13 +74,13 @@ html, body {
   }
 
   &.delete {
-    background-color: #FF855B;
+    background-color: #E84635;
   }
 }
 
 .url {
   font-family: Consolas, 'Courier New';
-  margin-left: 12px;
+  margin-left: 4px;
   margin-bottom: 20px;
   font-size: 14px;
 }
@@ -331,9 +332,10 @@ html, body {
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
+    padding: 15px 45px;
     line-height: 30px;
     outline: 0;
+    font-weight: normal;
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -590,10 +592,14 @@ html, body {
 
   blockquote {
     padding: 0;
+    font-size: 14px;
     &>p {
+      @extend %default-font;
+      text-transform: uppercase;
+      font-weight: bold;
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding;
-      color: #ccc;
+      color: white;
     }
   }
 }

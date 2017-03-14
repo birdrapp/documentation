@@ -202,7 +202,7 @@
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;plaintext&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,6 +211,10 @@
     </a>
     <div class="tocify-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="plaintext">HTTP</a>
+              <a href="#" data-language-name="shell">Shell</a>
+        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -230,7 +234,18 @@
 <h2 id="get-all-birds">Get all birds</h2>
 
 <p><span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds</span></p>
-
+<pre class="highlight plaintext tab-plaintext"><code>GET https://api.birdr.co.uk/birds
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.birdr.co.uk/birds'</span>
+</code></pre>
+<blockquote>
+<p>Sample response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scientificName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robinus Robinus"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h2 id="get-a-specific-bird">Get a specific bird</h2>
 
 <p><span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds/{id}</span></p>
@@ -303,6 +318,10 @@
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="plaintext">HTTP</a>
+                <a href="#" data-language-name="shell">Shell</a>
+          </div>
       </div>
     </div>
   </body>

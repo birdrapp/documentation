@@ -6,6 +6,10 @@ toc_footers:
 includes:
   - errors
 
+language_tabs:
+  - plaintext: HTTP
+  - shell: Shell
+
 search: true
 ---
 
@@ -18,6 +22,24 @@ Welcome to the Birdr API documentation.
 
 ## Get all birds
 <span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds</span>
+
+```plaintext
+GET https://api.birdr.co.uk/birds
+```
+
+```shell
+curl 'https://api.birdr.co.uk/birds'
+```
+
+> Sample response:
+
+```json
+{
+  "id": "uuid",
+  "commonName": "Robin",
+  "scientificName": "Robinus Robinus"
+}
+```
 
 ## Get a specific bird
 <span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds/{id}</span>
