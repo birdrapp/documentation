@@ -227,36 +227,213 @@
       <div class="content">
         <h1 id="introduction" class="visible">Introduction</h1>
 
-<p>Welcome to the Birdr API documentation.</p>
+<p>Welcome to the Birdr API.</p>
+
+<p>This documentation is intended to aid any developers wishing to build an application using the Birdr API.</p>
+
+<p>For each endpoint in this document you will find sample snippets you can use, in two available formats:</p>
+
+<ul>
+<li>HTTP request</li>
+<li>Curl command</li>
+</ul>
 
 <h1 id="birds">Birds</h1>
 
 <h2 id="get-all-birds">Get all birds</h2>
-
-<p><span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds</span></p>
-<pre class="highlight plaintext tab-plaintext"><code>GET https://api.birdr.co.uk/birds
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.birdr.co.uk/birds'</span>
+<pre class="highlight plaintext tab-plaintext"><code>GET https://api.birdr.co.uk/birds?
+  page=PAGE&amp;
+  perPage=PER_PAGE&amp;
+  q=QUERY&amp;
+  scientificName=SCIENTIFIC_NAME
 </code></pre>
 <blockquote>
 <p>Sample response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"scientificName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robinus Robinus"</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"perPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">31148</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.birdr.co.uk/birds?page=2&amp;perPage=20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Common Ostrich"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scientificName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthio camelus"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ostriches"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthionidae"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthioniformes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"speciesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subspecies"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id="get-a-specific-bird">Get a specific bird</h2>
+<p><span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds</span></p>
 
+<p>Returns a paginated list of all birds in the API.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">page</code></td>
+<td>The <code class="prettyprint">page</code> number of results. Default: 1.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">perPage</code></td>
+<td>The number of results to return per page. Default: 20.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">q</code></td>
+<td>Use this to search for specific birds. <strong>This is a fuzzy match on the birds common name.</strong></td>
+</tr>
+<tr>
+<td><code class="prettyprint">scientificName</code></td>
+<td>Filters birds based on their scientific name. <strong>This is an exact match only filter.</strong></td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-bird">Get a specific bird</h2>
+<pre class="highlight plaintext tab-plaintext"><code>GET https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29
+</code></pre><pre class="highlight shell tab-shell"><code>curl https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29
+</code></pre>
+<blockquote>
+<p>Sample response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Common Ostrich"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scientificName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthio camelus"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ostriches"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthionidae"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthioniformes"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"speciesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subspecies"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><span class="verb get">GET</span> <span class="url">https://api.birdr.co.uk/birds/{id}</span></p>
 
-<h2 id="create-a-new-bird">Create a new bird</h2>
+<p>Returns a specific bird from the API.</p>
 
-<p><span class="verb post">POST</span> <span class="url">https://api.birdr.co.uk/birds/{id}</span></p>
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">id</code> - <strong>Required</strong></td>
+<td>The unique identifier of the bird you wish to retrieve.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-new-bird">Create a new bird</h2>
+<pre class="highlight plaintext tab-plaintext"><code>POST https://api.birdr.co.uk/birds
+{
+  "commonName": "Common Ostrich",
+  "scientificName": "Struthio camelus",
+  "familyName": "Ostriches",
+  "family": "Struthionidae",
+  "order": "Struthioniformes",
+  "sort": 1
+}
+</code></pre><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url <span class="s1">'https://api.birdr.co.uk/birds'</span>
+  --header <span class="s1">'Content-Type: application/json'</span>
+  --data <span class="s1">'{"commonName": "Common Ostrich", "scientificName": "Struthio camelus", "familyName": "Ostriches", "family": "Struthionidae", "order": "Struthioniformes", "sort": 1}'</span>
+</code></pre>
+<blockquote>
+<p>Sample response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"commonName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Common Ostrich"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scientificName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthio camelus"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ostriches"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthionidae"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Struthioniformes"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"speciesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-12T19:02:17.354Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subspecies"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><span class="verb post">POST</span> <span class="url">https://api.birdr.co.uk/birds</span></p>
+
+<p>Creates a new bird.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">commonName</code><br><strong>Required</strong></td>
+<td>The common name of the bird. Typically this is the internationally recognised name, rather than a local or regional alternative.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">scientificName</code><br><strong>Required</strong></td>
+<td>The scientific name of the bird.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">familyName</code><br><strong>Required</strong></td>
+<td>The English name of the scientific family of the bird.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">family</code><br><strong>Required</strong></td>
+<td>The scientific family this bird belongs to.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">order</code><br><strong>Required</strong></td>
+<td>The scientific order this bird belongs to.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">sort</code><br><strong>Required</strong></td>
+<td>An integer value representing where this bird should appear in the order of birds.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>The API will return the newly created bird in the response - including a newly generated ID.</p>
 
 <h2 id="delete-a-bird">Delete a bird</h2>
-
+<pre class="highlight plaintext tab-plaintext"><code>DELETE https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29
+</code></pre><pre class="highlight shell tab-shell"><code>curl --request DELETE --url <span class="s1">'https://api.birdr.co.uk/birds/6950a3b6-0756-11e7-891a-1b6429a03d29'</span>
+</code></pre>
 <p><span class="verb delete">DELETE</span> <span class="url">https://api.birdr.co.uk/birds/{id}</span></p>
+
+<p>Removes a bird from the API.</p>
 
 <h1 id="lists">Lists</h1>
 
